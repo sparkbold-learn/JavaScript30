@@ -63,7 +63,11 @@
     window.addEventListener('keydown', function (e) {
 
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // Note here I use attribute selector
-      console.log(audio);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); // Note here I use attribute selector
+      if (!audio) return; // this will stop the function if null
+      audio.currentTime = 0; // rewind to initial
+      audio.play();
+      console.log(key)
     });
   </script>
 
